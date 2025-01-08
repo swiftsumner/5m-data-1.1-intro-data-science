@@ -15,6 +15,17 @@ def fizz_buzz(number):
     >>> fizz_buzz(15)
     'FizzBuzz'
     """
+    try:
+        if number % 3 == 0 and number % 5 == 0:
+            print('\'FizzBuzz\'')
+        elif number % 3 ==0:
+            print('\'Fizz\'')
+        elif number % 5 == 0:
+            print('\'Buzz\'')
+        else:
+            return number
+    except:
+        print('A number must be given')
     return
 
 
@@ -30,7 +41,18 @@ def sum_of_squares(numbers):
     >>> sum_of_squares([2, 4, 6])
     56
     """
-    return
+
+    if type(numbers) != list:
+        print('A list must be provided')
+        return
+    
+    try:
+        sum = 0
+        for n in numbers:
+            sum += pow(n, 2)
+        return sum
+    except:
+        print('The list must contain numbers')
 
 
 # Question 3
@@ -45,7 +67,18 @@ def count_vowels(string):
     >>> count_vowels("aeiou")
     5
     """
-    return
+
+    if type(string) != str:
+        print('A string must be given')
+        return
+
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    count = 0
+
+    for s in string:
+        if s in vowels:
+            count += 1
+    return count
 
 
 # Question 4
@@ -60,7 +93,26 @@ def count_repeats(string):
     >>> count_repeats("aeiou")
     0
     """
-    return
+
+    if type(string) != str:
+        print('A string must be given')
+        return
+    
+    dct_repeats = {}
+    count = 0
+
+    for s in string:
+        if s in dct_repeats:
+            dct_repeats[s] = dct_repeats.get(s) + 1
+        else:
+            dct_repeats[s] = 1
+    
+    values = dct_repeats.values()
+
+    for v in values:
+        if v>1:
+            count += v
+    return count
 
 
 if __name__ == "__main__":
